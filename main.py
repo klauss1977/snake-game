@@ -24,7 +24,6 @@ def game():
     screen.onkey(snake.left, "Left")
 
     game_is_on = True
-    score = 0
     while game_is_on:
         screen.update()
         time.sleep(0.1)
@@ -41,7 +40,6 @@ def game():
             scoreboard.update_score()
 
             scoreboard.game_over()
-
 
         for segment in snake.segments[1:]:
             if snake.head.distance(segment) < 10:
