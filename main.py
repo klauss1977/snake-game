@@ -30,18 +30,24 @@ def game():
         time.sleep(0.1)
         snake.move()
         if snake.head.distance(food) < 15:
-            score += 1
+            scoreboard.score += 1
             snake.extend()
             food.refresh()
-        scoreboard.score(score)
+        scoreboard.update_score()
 
         if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
             game_is_on = False
+            scoreboard.set_the_new_highscore()
+            scoreboard.update_score()
+
             scoreboard.game_over()
+
 
         for segment in snake.segments[1:]:
             if snake.head.distance(segment) < 10:
                 game_is_on = False
+                scoreboard.set_the_new_highscore()
+                scoreboard.update_score()
                 scoreboard.game_over()
 
 
